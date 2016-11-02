@@ -105,6 +105,7 @@
 				TargetAttributes = {
 					FAD6B3681DC3E5EA00269310 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = N6SB9TB72Y;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -272,7 +273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N6SB9TB72Y;
 				INFOPLIST_FILE = PhotosPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AR.PhotosPicker;
@@ -285,7 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N6SB9TB72Y;
 				INFOPLIST_FILE = PhotosPicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AR.PhotosPicker;
