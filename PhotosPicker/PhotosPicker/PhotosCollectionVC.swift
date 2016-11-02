@@ -15,6 +15,7 @@ class PhotosCollectionVC: UICollectionViewController {
 
     //MARK: Properties
     var videos : PHFetchResult<PHAsset>!
+    var thumbnails : [UIImage]!
     
     let imageManager = PHCachingImageManager()
     
@@ -34,6 +35,17 @@ class PhotosCollectionVC: UICollectionViewController {
         print(videosAlbum.count)
         self.videos = PHAsset.fetchAssets(in: videosAlbum.object(at: 0), options: nil)
         print(self.videos.count)
+        
+        self.imageManager.startCachingImages(for: self.videos.objects(at: [0, videos.count-1]), targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFit, options: nil)
+        
+        for i in 0..<self.videos.count {
+            self.imageManager.requestImage(for: videos.object(at: i), targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFit, options: nil, resultHandler: {
+                image, _ in
+                
+                self.thumbnails?.append(image!)
+            })
+            
+        }
     }
 
 
@@ -57,13 +69,14 @@ class PhotosCollectionVC: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return videos.count
+        return 200 //videos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotosCell
         let asset = videos.object(at: indexPath.item)
         
+        //cell.thumbnailImage = self.thumbnails?[indexPath.item]
         cell.assetIdentifier = asset.localIdentifier
         imageManager.requestImage(for: asset, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: {
             image, _ in
@@ -74,7 +87,7 @@ class PhotosCollectionVC: UICollectionViewController {
                     cell.thumbnailImage = image
             }
         })
-    
+  
         return cell
     }
 
