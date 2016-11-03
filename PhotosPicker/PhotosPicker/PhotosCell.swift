@@ -2,7 +2,7 @@
 //  PhotosCell.swift
 //  PhotosPicker
 //
-//  Created by Alex Reichle on 10/28/16.
+//  Created by Alex on 10/28/16.
 //  Copyright © 2016 Alex. All rights reserved.
 //
 
@@ -12,11 +12,14 @@ class PhotosCell: UICollectionViewCell {
     
     @IBOutlet weak var photoThumbnail: UIImageView!
     
-    var assetIdentifier : String!
-    
     var thumbnailImage: UIImage! {
         didSet {
             photoThumbnail.image = thumbnailImage
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoThumbnail.image = nil
     }
 }

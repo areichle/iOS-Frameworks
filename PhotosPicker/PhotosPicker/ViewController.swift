@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  PhotosPicker
 //
-//  Created by Alex Reichle on 10/28/16.
+//  Created by Alex on 10/28/16.
 //  Copyright © 2016 Alex. All rights reserved.
 //
 

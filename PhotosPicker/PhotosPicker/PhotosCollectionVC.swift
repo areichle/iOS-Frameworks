@@ -2,7 +2,7 @@
 //  PhotosCollectionVC.swift
 //  PhotosPicker
 //
-//  Created by Alex Reichle on 10/28/16.
+//  Created by Alex on 10/28/16.
 //  Copyright © 2016 Alex. All rights reserved.
 //
 
@@ -26,7 +26,7 @@ class PhotosCollectionVC: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(PhotosCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.register(PhotosCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
         
@@ -40,24 +40,7 @@ class PhotosCollectionVC: UICollectionViewController {
         
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -65,15 +48,17 @@ class PhotosCollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotosCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? PhotosCell
         let asset = videos.object(at: indexPath.item)
 
         imageManager.requestImage(for: asset, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: {
             image, _ in
-            cell.thumbnailImage = image
+            print(image.debugDescription)
+            
+            cell?.thumbnailImage = image
         })
   
-        return cell
+        return cell!
     }
 
     // MARK: UICollectionViewDelegate
