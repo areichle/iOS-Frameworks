@@ -1,0 +1,5 @@
+Goals of this project:
+
+    - Testing out problems with AVAssetExportSession exporting
+    - Figuring out how to properly export an AVAsset to a certain directory
+    - Using notification center to properly pass the URL of a stored asset to an AVPlayerViewController class and initialize/start playing

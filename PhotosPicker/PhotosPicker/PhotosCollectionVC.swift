@@ -91,5 +91,9 @@ class PhotosCollectionVC: UICollectionViewController {
     
     }
     */
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Item Selected")
+    }
 
 }
