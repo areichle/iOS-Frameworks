@@ -8,28 +8,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    var userDataPopover : UIPopoverPresentationController!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, popoverProtocol {
 
     @IBAction func showPopover(_ sender: UIButton) {
-        // trying to present the PopoverView.xib file as a popover
-        // these all currently all have errors but I'm not sure why
-        var toBePresented = PopoverViewClass()
-        toBePresented.presentationStyle = .popover
-        self.userDataPopover = UIPopoverPresentationController(presentedViewController: toBePresented, presenting: self)
         
-        self.present(self.userDataPopover, animated: true, completion: nil)
+        let VC = storyboard?.instantiateViewController(withIdentifier: "Popover") as! PopoverVCViewController
+        // VC.preferredContentSize = CGSize(width: 400, height: 500) <- Can also use this to present a view form your storyboard that has a custom sized view
+        VC.delegate = self
+        let navController = UINavigationController(rootViewController: VC)
+        navController.modalPresentationStyle = .formSheet
+        
+        let popOver = navController.popoverPresentationController
+        popOver?.delegate = self
+        popOver?.sourceView = sender
+        
+        self.present(navController, animated: true, completion: nil)
+    }
+
+    func finishedEditing(textField: String) {
+        print("Text Recieved: " + textField)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

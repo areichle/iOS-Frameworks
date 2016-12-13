@@ -1,0 +1,4 @@
+This project is a quick proof of concept for displaying a popover (.formSheet type)  - mainly on an iPad - in iOS 10 with Xcode 8.1.
+
+This StackOverflow link is a good reference - especially if you have questions on Obj-C implementation.
+        http://stackoverflow.com/a/24687152/7093605
