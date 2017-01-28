@@ -313,6 +313,7 @@
 				FA5D23C11E3C12370027560A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

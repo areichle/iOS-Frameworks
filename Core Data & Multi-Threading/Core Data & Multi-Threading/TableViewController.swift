@@ -204,6 +204,11 @@ class TableViewController: UITableViewController {
                     }
                     
                     self?.localArray.remove(at: indexPath.item)
+                    do {
+                        try backgroundContext.save()
+                    } catch {
+                        NSLog("Cannot save on background thread")
+                    }
                     DispatchQueue.main.async {
                         self?.tableView.reloadData()
                     }
