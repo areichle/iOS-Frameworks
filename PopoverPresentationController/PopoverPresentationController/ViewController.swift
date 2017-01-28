@@ -15,6 +15,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         let VC = storyboard?.instantiateViewController(withIdentifier: "Popover") as! PopoverVCViewController
         // VC.preferredContentSize = CGSize(width: 400, height: 500) <- Can also use this to present a view form your storyboard that has a custom sized view
         VC.delegate = self
+        
         let navController = UINavigationController(rootViewController: VC)
         navController.modalPresentationStyle = .formSheet
         
@@ -30,4 +31,3 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         self.dismiss(animated: true, completion: nil)
     }
 }
-
